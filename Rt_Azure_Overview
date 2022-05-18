@@ -1,4 +1,4 @@
-<mxfile modified="2022-05-18T16:22:00.688Z" host="app.diagrams.net" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32" etag="Ub_6Ryr_E6TmCw-DHwaT" version="18.0.1" type="github" pages="2">
+<mxfile modified="2022-05-18T16:22:37.097Z" host="app.diagrams.net" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.41 Safari/537.36 Edg/101.0.1210.32" etag="tI8ce62YVGLe-kRU9h-B" version="18.0.1" type="github" pages="2">
   <diagram id="WI9T0HZ2pTsCkuznbFz-" name="Page-1">
     <mxGraphModel dx="1884" dy="1828" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -147,7 +147,7 @@
           <mxGeometry x="-52.44999999999999" y="-999" width="37.5" height="30" as="geometry" />
         </mxCell>
         <mxCell id="28vzyVP7CY1h9_ueQVYb-2" value="&lt;font face=&quot;Helvetica&quot; color=&quot;#141414&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;RioTinto-Global-Network&lt;/span&gt;&lt;/font&gt;&lt;br style=&quot;color: rgb(20, 20, 20); font-family: Helvetica; padding: 0px; margin: 0px; font-size: 8px;&quot;&gt;&lt;span style=&quot;color: rgb(20, 20, 20); font-family: Helvetica; font-size: 8px;&quot;&gt;Subscription&lt;/span&gt;" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Subscriptions.svg;rounded=0;shadow=0;glass=1;dashed=1;dashPattern=1 1;labelBackgroundColor=none;fontFamily=Helvetica;fontColor=#141414;strokeColor=#FF8000;fillColor=#7D7DFF;gradientColor=none;opacity=80;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="624.05" y="-469" width="35.94" height="58" as="geometry" />
+          <mxGeometry x="601.55" y="-514.43" width="35.94" height="58" as="geometry" />
         </mxCell>
         <mxCell id="28vzyVP7CY1h9_ueQVYb-6" value="&lt;font face=&quot;Helvetica&quot; color=&quot;#141414&quot;&gt;&lt;span style=&quot;font-size: 8px;&quot;&gt;RioTinto-Global-SharedServices&lt;/span&gt;&lt;/font&gt;&lt;br style=&quot;color: rgb(20, 20, 20); font-family: Helvetica; padding: 0px; margin: 0px; font-size: 8px;&quot;&gt;&lt;span style=&quot;color: rgb(20, 20, 20); font-family: Helvetica; font-size: 8px;&quot;&gt;Subscription&lt;/span&gt;" style="aspect=fixed;html=1;points=[];align=center;image;fontSize=12;image=img/lib/azure2/general/Subscriptions.svg;rounded=0;shadow=0;glass=1;dashed=1;dashPattern=1 1;labelBackgroundColor=none;fontFamily=Helvetica;fontColor=#141414;strokeColor=#FF8000;fillColor=#7D7DFF;gradientColor=none;opacity=80;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="82.04999999999995" y="-748" width="35.94" height="58" as="geometry" />
