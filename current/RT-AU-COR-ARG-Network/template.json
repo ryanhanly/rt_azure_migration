@@ -1,0 +1,997 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name": {
+            "defaultValue": "RT-SYD-TESTCOR-ERC-001",
+            "type": "String"
+        },
+        "virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name": {
+            "defaultValue": "RT-SYD-COR-VNT-10.214.0.0",
+            "type": "String"
+        },
+        "connections_RT_SYD_TESTCOR_ERC_001_to_RT_SYD_TESTCOR_VNG_002_name": {
+            "defaultValue": "RT-SYD-TESTCOR-ERC-001-to-RT-SYD-COR-VNG-002",
+            "type": "String"
+        },
+        "virtualNetworkGateways_RT_SYD_TESTCOR_VNG_002_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Network/providers/Microsoft.Network/virtualNetworkGateways/RT-SYD-COR-VNG-002",
+            "type": "String"
+        },
+        "routeTables_RT_SYD_TESTCOR_UDR_001_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Network/providers/Microsoft.Network/routeTables/RT-SYD-COR-UDR-001",
+            "type": "String"
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_001_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Security/providers/Microsoft.Network/networkSecurityGroups/RT-SYD-COR-NSG-001",
+            "type": "String"
+        },
+        "routeTables_rt_syd_cor_udr_002_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/rt-au-cor-arg-network/providers/Microsoft.Network/routeTables/rt-syd-cor-udr-002",
+            "type": "String"
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_003_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Security/providers/Microsoft.Network/networkSecurityGroups/RT-SYD-COR-NSG-003",
+            "type": "String"
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_005_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Security/providers/Microsoft.Network/networkSecurityGroups/RT-SYD-COR-NSG-005",
+            "type": "String"
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_004_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Security/providers/Microsoft.Network/networkSecurityGroups/RT-SYD-COR-NSG-004",
+            "type": "String"
+        },
+        "routeTables_rt_syd_cor_udr_004_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/rt-au-cor-arg-network/providers/Microsoft.Network/routeTables/rt-syd-cor-udr-004",
+            "type": "String"
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_006_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Security/providers/Microsoft.Network/networkSecurityGroups/RT-SYD-COR-NSG-006",
+            "type": "String"
+        },
+        "routeTables_rt_syd_cor_udr_003_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/rt-au-cor-arg-network/providers/Microsoft.Network/routeTables/rt-syd-cor-udr-003",
+            "type": "String"
+        },
+        "routeTables_RT_SYD_TESTCOR_UDR_F5ProxyTest_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-External-NVA-FwdProxyTest/providers/Microsoft.Network/routeTables/RT-SYD-COR-UDR-F5ProxyTest",
+            "type": "String"
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_002_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Security/providers/Microsoft.Network/networkSecurityGroups/RT-SYD-COR-NSG-002",
+            "type": "String"
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_Squid_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-EXTERNAL-SQUID/providers/Microsoft.Network/networkSecurityGroups/RT-SYD-COR-NSG-Squid",
+            "type": "String"
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_007_externalid": {
+            "defaultValue": "/subscriptions/50c44d58-af5e-4dd1-9320-2825ef300019/resourceGroups/RT-AU-COR-ARG-Security/providers/Microsoft.Network/networkSecurityGroups/RT-SYD-COR-NSG-007",
+            "type": "String"
+        },
+        "virtualNetworks_RT_SYD_NPE_VNT_10_226_0_0_externalid": {
+            "defaultValue": "/subscriptions/20de117c-45de-4ca7-a378-479e3e0bec70/resourceGroups/RT-AU-NPE-ARG-Network/providers/Microsoft.Network/virtualNetworks/RT-SYD-NPE-VNT-10.226.0.0",
+            "type": "String"
+        },
+        "virtualNetworks_RT_SYD_PRD_VNT_10_215_0_0_externalid": {
+            "defaultValue": "/subscriptions/222aff5b-c634-4d17-a18a-16debeef8426/resourceGroups/RT-AU-PRD-ARG-Network/providers/Microsoft.Network/virtualNetworks/RT-SYD-PRD-VNT-10.215.0.0",
+            "type": "String"
+        },
+        "virtualNetworks_RT_SYD_SEC_VNT_10_214_24_0_externalid": {
+            "defaultValue": "/subscriptions/fe2f8416-830e-4d93-a4c5-4857bb205469/resourceGroups/RT-SYD-SEC-ARG-Network/providers/Microsoft.Network/virtualNetworks/RT-SYD-SEC-VNT-10.214.24.0",
+            "type": "String"
+        },
+        "virtualNetworks_RT_SYD_DEV_VNET_10_214_28_0_externalid": {
+            "defaultValue": "/subscriptions/7704663e-8944-4300-b951-6462d41ab638/resourceGroups/RT-AU-DEV-ARG-PACE-Network/providers/Microsoft.Network/virtualNetworks/RT-SYD-DEV-VNET-10.214.28.0",
+            "type": "String"
+        },
+        "virtualNetworks_RT_SYD_DEV_VNET_10_214_26_0_externalid": {
+            "defaultValue": "/subscriptions/7704663e-8944-4300-b951-6462d41ab638/resourceGroups/RT-AU-DEV-ARG-PACE-Network/providers/Microsoft.Network/virtualNetworks/RT-SYD-DEV-VNET-10.214.26.0",
+            "type": "String"
+        },
+        "virtualNetworks_RT_SYD_DEV_VNET_10_214_27_0_externalid": {
+            "defaultValue": "/subscriptions/7704663e-8944-4300-b951-6462d41ab638/resourceGroups/RT-AU-DEV-ARG-PACE-Network/providers/Microsoft.Network/virtualNetworks/RT-SYD-DEV-VNET-10.214.27.0",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Network/expressRouteCircuits",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name')]",
+            "location": "australiaeast",
+            "tags": {
+                "Owner": "RT IT",
+                "Environment": "SharedServices",
+                "Cloud": "Azure",
+                "DeleteProtection": "Enabled",
+                "ResourceType": "Network",
+                "CostCode": "C096"
+            },
+            "sku": {
+                "name": "Standard_MeteredData",
+                "tier": "Premium",
+                "family": "MeteredData"
+            },
+            "properties": {
+                "peerings": [
+                    {
+                        "name": "AzurePrivatePeering",
+                        "properties": {
+                            "peeringType": "AzurePrivatePeering",
+                            "peerASN": 4200003055,
+                            "primaryPeerAddressPrefix": "10.211.201.20/30",
+                            "secondaryPeerAddressPrefix": "10.211.201.24/30",
+                            "state": "Enabled",
+                            "vlanId": 1337,
+                            "microsoftPeeringConfig": {
+                                "advertisedPublicPrefixes": [],
+                                "advertisedCommunities": [],
+                                "customerASN": 0,
+                                "legacyMode": 0,
+                                "routingRegistryName": "NONE"
+                            }
+                        }
+                    }
+                ],
+                "authorizations": [
+                    {
+                        "name": "[concat(parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name'), '-AUTHZ01')]",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "authorizationKey": "06780606-918d-401c-89c3-1b8e4d73284a",
+                            "authorizationUseStatus": "Used"
+                        }
+                    }
+                ],
+                "serviceProviderProperties": {
+                    "serviceProviderName": "Equinix",
+                    "peeringLocation": "Sydney",
+                    "bandwidthInMbps": 2000
+                },
+                "allowClassicOperations": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name')]",
+            "location": "australiaeast",
+            "tags": {
+                "Owner": "RT IT",
+                "Environment": "SharedServices",
+                "DeleteProtection": "Enabled",
+                "CostCode": "C096",
+                "Cloud": "Azure",
+                "ResourceType": "Network"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.214.0.0/22",
+                        "172.28.0.0/24"
+                    ]
+                },
+                "dhcpOptions": {
+                    "dnsServers": [
+                        "10.214.1.5",
+                        "10.54.3.22",
+                        "10.45.219.23"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "GatewaySubnet",
+                        "properties": {
+                            "addressPrefix": "10.214.3.224/27",
+                            "routeTable": {
+                                "id": "[parameters('routeTables_RT_SYD_TESTCOR_UDR_001_externalid')]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-Infrastructure",
+                        "properties": {
+                            "addressPrefix": "10.214.0.0/24",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_001_externalid')]"
+                            },
+                            "routeTable": {
+                                "id": "[parameters('routeTables_rt_syd_cor_udr_002_externalid')]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-Internal-Management",
+                        "properties": {
+                            "addressPrefix": "10.214.2.0/27",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_003_externalid')]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-External-Management",
+                        "properties": {
+                            "addressPrefix": "172.28.0.0/27",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_005_externalid')]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-Internal-In",
+                        "properties": {
+                            "addressPrefix": "10.214.2.32/27",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_004_externalid')]"
+                            },
+                            "routeTable": {
+                                "id": "[parameters('routeTables_rt_syd_cor_udr_004_externalid')]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-External-In",
+                        "properties": {
+                            "addressPrefix": "172.28.0.32/27",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_006_externalid')]"
+                            },
+                            "routeTable": {
+                                "id": "[parameters('routeTables_rt_syd_cor_udr_003_externalid')]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "AzureBastionSubnet",
+                        "properties": {
+                            "addressPrefix": "10.214.2.64/27",
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-F5ProxyTest-External-In",
+                        "properties": {
+                            "addressPrefix": "172.28.0.104/29",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_006_externalid')]"
+                            },
+                            "routeTable": {
+                                "id": "[parameters('routeTables_RT_SYD_TESTCOR_UDR_F5ProxyTest_externalid')]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-Identity",
+                        "properties": {
+                            "addressPrefix": "10.214.1.0/24",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_002_externalid')]"
+                            },
+                            "routeTable": {
+                                "id": "[parameters('routeTables_rt_syd_cor_udr_002_externalid')]"
+                            },
+                            "serviceEndpoints": [
+                                {
+                                    "service": "Microsoft.Storage",
+                                    "locations": [
+                                        "australiaeast",
+                                        "australiasoutheast"
+                                    ]
+                                }
+                            ],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-External-Out-Squid",
+                        "properties": {
+                            "addressPrefix": "10.214.2.96/28",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_Squid_externalid')]"
+                            },
+                            "serviceEndpoints": [],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    },
+                    {
+                        "name": "RT-SYD-COR-SUB-External-Out",
+                        "properties": {
+                            "addressPrefix": "172.28.0.64/27",
+                            "networkSecurityGroup": {
+                                "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_007_externalid')]"
+                            },
+                            "serviceEndpoints": [
+                                {
+                                    "service": "Microsoft.AzureCosmosDB",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.CognitiveServices",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.ContainerRegistry",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.EventHub",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.KeyVault",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.ServiceBus",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.Sql",
+                                    "locations": [
+                                        "australiaeast"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.Storage",
+                                    "locations": [
+                                        "australiaeast",
+                                        "australiasoutheast"
+                                    ]
+                                },
+                                {
+                                    "service": "Microsoft.Web",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                }
+                            ],
+                            "delegations": [],
+                            "privateEndpointNetworkPolicies": "Enabled",
+                            "privateLinkServiceNetworkPolicies": "Enabled"
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [
+                    {
+                        "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-NPE-VNT-10.226.0.0')]",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_RT_SYD_NPE_VNT_10_226_0_0_externalid')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false,
+                            "remoteAddressSpace": {
+                                "addressPrefixes": [
+                                    "10.226.0.0/19"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-PRD-VNT-10.215.0.0')]",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_RT_SYD_PRD_VNT_10_215_0_0_externalid')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false,
+                            "remoteAddressSpace": {
+                                "addressPrefixes": [
+                                    "10.215.0.0/16"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-SEC-VNT-10.214.24.0')]",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_RT_SYD_SEC_VNT_10_214_24_0_externalid')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false,
+                            "remoteAddressSpace": {
+                                "addressPrefixes": [
+                                    "10.214.24.0/24"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-DEV-VNET-10.214.28.0')]",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_RT_SYD_DEV_VNET_10_214_28_0_externalid')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false,
+                            "remoteAddressSpace": {
+                                "addressPrefixes": [
+                                    "10.214.28.0/22"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-DEV-VNET-10.214.26.0')]",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_RT_SYD_DEV_VNET_10_214_26_0_externalid')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false,
+                            "remoteAddressSpace": {
+                                "addressPrefixes": [
+                                    "10.214.26.0/24"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-DEV-VNET-10.214.27.0')]",
+                        "properties": {
+                            "peeringState": "Connected",
+                            "remoteVirtualNetwork": {
+                                "id": "[parameters('virtualNetworks_RT_SYD_DEV_VNET_10_214_27_0_externalid')]"
+                            },
+                            "allowVirtualNetworkAccess": true,
+                            "allowForwardedTraffic": true,
+                            "allowGatewayTransit": true,
+                            "useRemoteGateways": false,
+                            "remoteAddressSpace": {
+                                "addressPrefixes": [
+                                    "10.214.27.0/24"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "enableDdosProtection": false
+            }
+        },
+        {
+            "type": "Microsoft.Network/connections",
+            "apiVersion": "2020-11-01",
+            "name": "[parameters('connections_RT_SYD_TESTCOR_ERC_001_to_RT_SYD_TESTCOR_VNG_002_name')]",
+            "location": "australiaeast",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/expressRouteCircuits', parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name'))]"
+            ],
+            "tags": {
+                "Cloud": "Azure"
+            },
+            "properties": {
+                "virtualNetworkGateway1": {
+                    "id": "[parameters('virtualNetworkGateways_RT_SYD_TESTCOR_VNG_002_externalid')]"
+                },
+                "connectionType": "ExpressRoute",
+                "routingWeight": 100,
+                "enableBgp": false,
+                "useLocalAzureIpAddress": false,
+                "usePolicyBasedTrafficSelectors": false,
+                "ipsecPolicies": [],
+                "trafficSelectorPolicies": [],
+                "peer": {
+                    "id": "[resourceId('Microsoft.Network/expressRouteCircuits', parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name'))]"
+                },
+                "expressRouteGatewayBypass": false,
+                "dpdTimeoutSeconds": 0,
+                "connectionMode": "Default"
+            }
+        },
+        {
+            "type": "Microsoft.Network/expressRouteCircuits/authorizations",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name'), '/', parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name'), '-AUTHZ01')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/expressRouteCircuits', parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name'))]"
+            ],
+            "properties": {
+                "provisioningState": "Succeeded",
+                "authorizationKey": "06780606-918d-401c-89c3-1b8e4d73284a",
+                "authorizationUseStatus": "Used"
+            }
+        },
+        {
+            "type": "Microsoft.Network/expressRouteCircuits/peerings",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name'), '/AzurePrivatePeering')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/expressRouteCircuits', parameters('expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name'))]"
+            ],
+            "properties": {
+                "peeringType": "AzurePrivatePeering",
+                "peerASN": 4200003055,
+                "primaryPeerAddressPrefix": "10.211.201.20/30",
+                "secondaryPeerAddressPrefix": "10.211.201.24/30",
+                "state": "Enabled",
+                "vlanId": 1337,
+                "microsoftPeeringConfig": {
+                    "advertisedPublicPrefixes": [],
+                    "advertisedCommunities": [],
+                    "customerASN": 0,
+                    "legacyMode": 0,
+                    "routingRegistryName": "NONE"
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/AzureBastionSubnet')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.214.2.64/27",
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/GatewaySubnet')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.214.3.224/27",
+                "routeTable": {
+                    "id": "[parameters('routeTables_RT_SYD_TESTCOR_UDR_001_externalid')]"
+                },
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-External-In')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.28.0.32/27",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_006_externalid')]"
+                },
+                "routeTable": {
+                    "id": "[parameters('routeTables_rt_syd_cor_udr_003_externalid')]"
+                },
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-External-Management')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.28.0.0/27",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_005_externalid')]"
+                },
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-External-Out')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.28.0.64/27",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_007_externalid')]"
+                },
+                "serviceEndpoints": [
+                    {
+                        "service": "Microsoft.AzureCosmosDB",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.CognitiveServices",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.ContainerRegistry",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.EventHub",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.KeyVault",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.ServiceBus",
+                        "locations": [
+                            "*"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.Sql",
+                        "locations": [
+                            "australiaeast"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.Storage",
+                        "locations": [
+                            "australiaeast",
+                            "australiasoutheast"
+                        ]
+                    },
+                    {
+                        "service": "Microsoft.Web",
+                        "locations": [
+                            "*"
+                        ]
+                    }
+                ],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-External-Out-Squid')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.214.2.96/28",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_Squid_externalid')]"
+                },
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-F5ProxyTest-External-In')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "172.28.0.104/29",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_006_externalid')]"
+                },
+                "routeTable": {
+                    "id": "[parameters('routeTables_RT_SYD_TESTCOR_UDR_F5ProxyTest_externalid')]"
+                },
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-Identity')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.214.1.0/24",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_002_externalid')]"
+                },
+                "routeTable": {
+                    "id": "[parameters('routeTables_rt_syd_cor_udr_002_externalid')]"
+                },
+                "serviceEndpoints": [
+                    {
+                        "service": "Microsoft.Storage",
+                        "locations": [
+                            "australiaeast",
+                            "australiasoutheast"
+                        ]
+                    }
+                ],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-Infrastructure')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.214.0.0/24",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_001_externalid')]"
+                },
+                "routeTable": {
+                    "id": "[parameters('routeTables_rt_syd_cor_udr_002_externalid')]"
+                },
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-Internal-In')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.214.2.32/27",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_004_externalid')]"
+                },
+                "routeTable": {
+                    "id": "[parameters('routeTables_rt_syd_cor_udr_004_externalid')]"
+                },
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/RT-SYD-COR-SUB-Internal-Management')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "addressPrefix": "10.214.2.0/27",
+                "networkSecurityGroup": {
+                    "id": "[parameters('networkSecurityGroups_RT_SYD_TESTCOR_NSG_003_externalid')]"
+                },
+                "serviceEndpoints": [],
+                "delegations": [],
+                "privateEndpointNetworkPolicies": "Enabled",
+                "privateLinkServiceNetworkPolicies": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-DEV-VNET-10.214.26.0')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "peeringState": "Connected",
+                "remoteVirtualNetwork": {
+                    "id": "[parameters('virtualNetworks_RT_SYD_DEV_VNET_10_214_26_0_externalid')]"
+                },
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": true,
+                "useRemoteGateways": false,
+                "remoteAddressSpace": {
+                    "addressPrefixes": [
+                        "10.214.26.0/24"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-DEV-VNET-10.214.27.0')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "peeringState": "Connected",
+                "remoteVirtualNetwork": {
+                    "id": "[parameters('virtualNetworks_RT_SYD_DEV_VNET_10_214_27_0_externalid')]"
+                },
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": true,
+                "useRemoteGateways": false,
+                "remoteAddressSpace": {
+                    "addressPrefixes": [
+                        "10.214.27.0/24"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-DEV-VNET-10.214.28.0')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "peeringState": "Connected",
+                "remoteVirtualNetwork": {
+                    "id": "[parameters('virtualNetworks_RT_SYD_DEV_VNET_10_214_28_0_externalid')]"
+                },
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": true,
+                "useRemoteGateways": false,
+                "remoteAddressSpace": {
+                    "addressPrefixes": [
+                        "10.214.28.0/22"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-NPE-VNT-10.226.0.0')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "peeringState": "Connected",
+                "remoteVirtualNetwork": {
+                    "id": "[parameters('virtualNetworks_RT_SYD_NPE_VNT_10_226_0_0_externalid')]"
+                },
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": true,
+                "useRemoteGateways": false,
+                "remoteAddressSpace": {
+                    "addressPrefixes": [
+                        "10.226.0.0/19"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-PRD-VNT-10.215.0.0')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "peeringState": "Connected",
+                "remoteVirtualNetwork": {
+                    "id": "[parameters('virtualNetworks_RT_SYD_PRD_VNT_10_215_0_0_externalid')]"
+                },
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": true,
+                "useRemoteGateways": false,
+                "remoteAddressSpace": {
+                    "addressPrefixes": [
+                        "10.215.0.0/16"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+            "apiVersion": "2020-11-01",
+            "name": "[concat(parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '/', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'), '-to-RT-SYD-SEC-VNT-10.214.24.0')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name'))]"
+            ],
+            "properties": {
+                "peeringState": "Connected",
+                "remoteVirtualNetwork": {
+                    "id": "[parameters('virtualNetworks_RT_SYD_SEC_VNT_10_214_24_0_externalid')]"
+                },
+                "allowVirtualNetworkAccess": true,
+                "allowForwardedTraffic": true,
+                "allowGatewayTransit": true,
+                "useRemoteGateways": false,
+                "remoteAddressSpace": {
+                    "addressPrefixes": [
+                        "10.214.24.0/24"
+                    ]
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "expressRouteCircuits_RT_SYD_TESTCOR_ERC_001_name": {
+            "value": null
+        },
+        "virtualNetworks_RT_SYD_TESTCOR_VNT_10_214_0_0_name": {
+            "value": null
+        },
+        "connections_RT_SYD_TESTCOR_ERC_001_to_RT_SYD_TESTCOR_VNG_002_name": {
+            "value": null
+        },
+        "virtualNetworkGateways_RT_SYD_TESTCOR_VNG_002_externalid": {
+            "value": null
+        },
+        "routeTables_RT_SYD_TESTCOR_UDR_001_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_001_externalid": {
+            "value": null
+        },
+        "routeTables_rt_syd_cor_udr_002_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_003_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_005_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_004_externalid": {
+            "value": null
+        },
+        "routeTables_rt_syd_cor_udr_004_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_006_externalid": {
+            "value": null
+        },
+        "routeTables_rt_syd_cor_udr_003_externalid": {
+            "value": null
+        },
+        "routeTables_RT_SYD_TESTCOR_UDR_F5ProxyTest_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_002_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_Squid_externalid": {
+            "value": null
+        },
+        "networkSecurityGroups_RT_SYD_TESTCOR_NSG_007_externalid": {
+            "value": null
+        },
+        "virtualNetworks_RT_SYD_NPE_VNT_10_226_0_0_externalid": {
+            "value": null
+        },
+        "virtualNetworks_RT_SYD_PRD_VNT_10_215_0_0_externalid": {
+            "value": null
+        },
+        "virtualNetworks_RT_SYD_SEC_VNT_10_214_24_0_externalid": {
+            "value": null
+        },
+        "virtualNetworks_RT_SYD_DEV_VNET_10_214_28_0_externalid": {
+            "value": null
+        },
+        "virtualNetworks_RT_SYD_DEV_VNET_10_214_26_0_externalid": {
+            "value": null
+        },
+        "virtualNetworks_RT_SYD_DEV_VNET_10_214_27_0_externalid": {
+            "value": null
+        }
+    }
+}
